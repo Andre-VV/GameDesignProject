@@ -26,13 +26,18 @@ A game where the player has to escape/survive from zombies attacking them. Top d
 - Enviroment art
 - Enviroment Coliders
 - weapons
+- - two weapons in first release
 - health system
     - Player health
     - enemy health
-- weapon damage
-- enemy damage
-- pickups
+- weapon interface
+- damage interface
+- pickups props (weapon/ cure items)
+- pickup items logic (other than weapons)
 - HUD
 - Win/lose conidition
-
+- Scenes
+- - Game
+- - Start (Titile)
+- - End + Restart
 
