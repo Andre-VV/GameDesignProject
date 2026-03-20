@@ -4,7 +4,10 @@ Enemy AI
 basic Level design  
 weapons
 
-
+# finished
+- Enamy AI
+- Weapon
+- Damage
 
 # Found out From the Playtest
 - Need of indicator to the Goal
