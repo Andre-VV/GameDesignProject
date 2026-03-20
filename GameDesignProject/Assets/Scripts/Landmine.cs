@@ -16,7 +16,7 @@ public class Landmine : MonoBehaviour, IDamageDealer
         var info = new DamageInfo { Amount = damage, Source = gameObject };
         foreach (var hit in hits)
             hit.GetComponent<IDamageable>()?.TakeDamage(info);
-
+        Debug.Log("Impact");
         Destroy(gameObject);
     }
 

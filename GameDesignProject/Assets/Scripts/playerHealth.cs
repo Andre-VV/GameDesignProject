@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class playerHealth : MonoBehaviour, IDamageable
 {
-    [SerializeField] float maxHealth = 100f;
-    float currentHealth;
+    [SerializeField] private float maxHealth = 100f;
+    [SerializeField]  private float currentHealth;
 
     public float MaxHealth => maxHealth;
     public float CurrentHealth => currentHealth;
@@ -22,7 +22,14 @@ public class playerHealth : MonoBehaviour, IDamageable
         if (IsDead) return;
         currentHealth = Mathf.Max(0, currentHealth - damage.Amount);
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
-        if (IsDead) Debug.Log("Killed");
-        if (IsDead) OnDeath?.Invoke();
+        if (IsDead) Die();
+        
+    }
+
+    private void Die()
+    {
+        Debug.Log("you are killed");
+        OnDeath?.Invoke();
+        Destroy(gameObject);
     }
 }
