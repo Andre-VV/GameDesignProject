@@ -4,4 +4,9 @@ Enemy AI
 basic Level design  
 weapons
 
+
+
+# Found out From the Playtest
+- Need of indicator to the Goal
+
 deadline: march 20
