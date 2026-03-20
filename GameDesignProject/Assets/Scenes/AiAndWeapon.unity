@@ -456,7 +456,7 @@ MonoBehaviour:
   m_BuildHeightMesh: 0
   m_MinRegionArea: 0
   m_HideEditorLogs: 0
-  m_NavMeshData: {fileID: 23800000, guid: a41d091c0c1dec043a2f6e35d8992a2d, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 0a48d246dc78f3749ae115a69e6ad0be, type: 2}
 --- !u!4 &589670555
 Transform:
   m_ObjectHideFlags: 0
@@ -1089,6 +1089,7 @@ GameObject:
   - component: {fileID: 1737300954}
   - component: {fileID: 1737300953}
   - component: {fileID: 1737300955}
+  - component: {fileID: 1737300956}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -1328,6 +1329,20 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &1737300956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1737300948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2c53e50b5c568d488aee7df5b81f584, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::playerHealth
+  maxHealth: 100
+  currentHealth: 0
 --- !u!4 &1822954763 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1290592995314662008, guid: 6ee4e2699640ce54988a145b28c8c000, type: 3}
