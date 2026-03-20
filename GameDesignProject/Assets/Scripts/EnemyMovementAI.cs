@@ -22,6 +22,11 @@ public class EnemyMovementAI : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        if (!player)
+        {
+            player = GameObject.FindWithTag("Player").transform;
+        }
+
         navMeshAgent = GetComponent<NavMeshAgent>();
         navMeshAgent.updateRotation = false;
         navMeshAgent.updateUpAxis = false;
