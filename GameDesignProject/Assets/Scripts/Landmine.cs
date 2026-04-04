@@ -1,4 +1,5 @@
 using UnityEngine;
+using Weapon.CombatTypes;
 
 public class Landmine : MonoBehaviour, IDamageDealer
 {
