@@ -37,6 +37,10 @@ public class GameManager : MonoBehaviour
         {
             EndGame(); // End the game when the duration is reached
         }
+        if (GameObject.FindGameObjectWithTag("Player") == null)
+        {
+            EndGame(); // End the game if the player is destroyed
+        }
     }
 
     IEnumerator GameStartRoutine()
@@ -82,7 +86,16 @@ public class GameManager : MonoBehaviour
                 spawner.stopSpawning();
             }
         }
-        
+        if (GameObject.FindGameObjectWithTag("Player") != null)
+        {
+            Destroy(GameObject.FindGameObjectWithTag("Player"));
+            timerText.text = "Game Over: Win!!!";
+        }
+        if (GameObject.FindGameObjectWithTag("Player") == null)
+        {
+            timerText.text = "Game Over: Lose!";
+        }
+
         Debug.Log("Game Over!");
     }
 
