@@ -109,4 +109,4 @@ MonoBehaviour:
   startTime: 0
   endTime: 60
   spawnIntervalStart: 10
-  spawnIntervalEnd: 1
+  spawnIntervalEnd: 0.5
