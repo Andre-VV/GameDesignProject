@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using Weapon.CombatTypes;
 
 public interface IDamageable
 {
@@ -8,6 +9,6 @@ public interface IDamageable
     bool IsDead { get; }
     void TakeDamage(DamageInfo damage);
     event Action<float, float> OnHealthChanged; // (current, max)
-    event Action OnDeath;
+    event Action<DeathInfo> OnDeath;
 
 }

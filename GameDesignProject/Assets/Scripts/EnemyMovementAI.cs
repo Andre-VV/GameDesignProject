@@ -37,12 +37,13 @@ public class EnemyMovementAI : MonoBehaviour
     {
         cooldownTimer -= Time.deltaTime;
 
-        float distance = Vector2.Distance(transform.position, player.position);
+        
         
 
 
         if (player != null)
         {
+            float distance = Vector2.Distance(transform.position, player.position);
             if(distance <= dashRange && cooldownTimer <= 0f)
             {
                 startDash();
