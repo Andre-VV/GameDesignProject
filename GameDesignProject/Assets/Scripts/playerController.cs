@@ -30,6 +30,7 @@ public class playerController : MonoBehaviour
         rb.linearVelocity = new Vector2(moveDirection.x * speed, moveDirection.y * speed);
     }
 
+    //todo: add dash in direction of mouse cursor, with cooldown. take from enemy dash code
 
 
 

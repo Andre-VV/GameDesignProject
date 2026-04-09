@@ -8,6 +8,9 @@ public class EnemyMovementAI : MonoBehaviour
     public Transform player;
     private NavMeshAgent navMeshAgent;
 
+    public GameObject flag;
+    public Transform flagTransform;
+
 
     public float dashRange = 5f;
     public float dashSpeed = 10f;
@@ -24,7 +27,17 @@ public class EnemyMovementAI : MonoBehaviour
     {
         if (!player)
         {
-            player = GameObject.FindWithTag("Player").transform;
+            if (GameObject.FindWithTag("Player") == null)
+            {
+                Debug.LogWarning("Player not found in the scene. Enemy move to flag.");
+                
+                player = GameObject.FindWithTag("flag").transform;
+            }
+            else
+            {
+                player = GameObject.FindWithTag("Player").transform;
+            }
+                
         }
 
         navMeshAgent = GetComponent<NavMeshAgent>();

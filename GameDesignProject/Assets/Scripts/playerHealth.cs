@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using Weapon.CombatTypes;
+using TMPro;
 
 
 public class playerHealth : MonoBehaviour, IDamageable
@@ -17,8 +18,16 @@ public class playerHealth : MonoBehaviour, IDamageable
     public event Action<float, float> OnHealthChanged;
     public event Action<DeathInfo> OnDeath;
 
+    //Display health in UI
+    public TextMeshProUGUI healthText;
 
-    void Start() => currentHealth = maxHealth;
+
+    void Start()
+    {
+        currentHealth = maxHealth;
+        // Initialize health display
+        healthText.text = currentHealth.ToString();
+    }
 
     // Update is called once per frame
     public void TakeDamage(DamageInfo damage)
@@ -29,7 +38,10 @@ public class playerHealth : MonoBehaviour, IDamageable
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
         lastDamageInfo = damage;
         if (IsDead) Die();
-        
+
+        // Update health display
+        healthText.text = currentHealth.ToString();
+
     }
 
     private void Die()

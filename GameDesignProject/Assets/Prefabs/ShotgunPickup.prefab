@@ -104,5 +104,5 @@ MonoBehaviour:
   projectilePrefab: {fileID: 2755985170907636674, guid: 7c511219396fc2744a41849e66c1d636, type: 3}
   projectileSpeed: 12
   projectileLifeTime: 1
-  pelletCount: 3
+  pelletCount: 5
   spreadAngle: 10
