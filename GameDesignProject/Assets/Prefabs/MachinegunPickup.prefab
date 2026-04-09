@@ -92,7 +92,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MachinegunWeapon
   weaponName: Machinegun
   supportsHoldFire: 1
-  damage: 7
+  damage: 10
   fireRate: 0.12
   targetLayers:
     serializedVersion: 2

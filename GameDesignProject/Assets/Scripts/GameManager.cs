@@ -93,7 +93,8 @@ public class GameManager : MonoBehaviour
         }
         if (GameObject.FindGameObjectWithTag("Player") == null)
         {
-            timerText.text = "Game Over: Lose!";
+            float timeRemaining = Mathf.Max(0f, gameDuration - currentTime);
+            timerText.text = "Game Over: Lose! " + timeRemaining.ToString();
         }
 
         Debug.Log("Game Over!");
