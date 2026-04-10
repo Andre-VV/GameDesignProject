@@ -39,7 +39,7 @@ public class ShotgunWeapon : MonoBehaviour, IWeapon
         if (projectilePrefab == null) return false;
         if (direction.sqrMagnitude <= 0.0001f) return false;
 
-        FireSound.Play();
+        PlaySound();
         SpawnPellets(origin, direction.normalized);
         lastFireTime = Time.time;
         
@@ -85,5 +85,15 @@ public class ShotgunWeapon : MonoBehaviour, IWeapon
             projectileLifeTime,
             targetLayers,
             owner);
+    }
+
+    private void PlaySound()
+    {
+        if(FireSound == null)
+        {
+            FireSound = GameObject.Find("shotgunFireSound").GetComponent<AudioSource>();
+        }
+        FireSound.Play();
+
     }
 }

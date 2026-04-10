@@ -21,6 +21,8 @@ public class EnemyHealth : MonoBehaviour, IDamageable
     public event Action<float, float> OnHealthChanged;
     public event Action<DeathInfo> OnDeath;
 
+    public EnemyDeathPickupSpawner pickupSpawner;
+
 
     private void Start()
     {
@@ -42,6 +44,11 @@ public class EnemyHealth : MonoBehaviour, IDamageable
 
     private void Die()
     {
+        if (pickupSpawner != null)
+        {
+            pickupSpawner.spawnRandomPickup();
+        }
+
         DeathInfo deathInfo = new DeathInfo
         {
             Victim = gameObject,

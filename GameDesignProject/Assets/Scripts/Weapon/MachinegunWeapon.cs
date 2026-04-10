@@ -37,7 +37,7 @@ public class MachinegunWeapon : MonoBehaviour, IWeapon
         if (projectilePrefab == null) return false;
         if (direction.sqrMagnitude <= 0.0001f) return false;
 
-        FireSound.Play();
+        PlaySound();
         SpawnProjectile(origin, direction.normalized);
         lastFireTime = Time.time;
         return true;
@@ -52,5 +52,15 @@ public class MachinegunWeapon : MonoBehaviour, IWeapon
     {
         Projectile projectileInstance = Instantiate(projectilePrefab, origin, Quaternion.identity);
         projectileInstance.Initialize(direction, damage, projectileSpeed, projectileLifeTime, targetLayers, owner);
+    }
+
+    private void PlaySound()
+    {
+        if (FireSound == null)
+        {
+            FireSound = GameObject.Find("MachinegunSound").GetComponent<AudioSource>();
+        }
+        FireSound.Play();
+
     }
 }

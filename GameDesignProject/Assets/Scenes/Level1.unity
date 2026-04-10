@@ -2282,7 +2282,7 @@ GameObject:
   - component: {fileID: 1123224541}
   - component: {fileID: 1123224542}
   m_Layer: 0
-  m_Name: shotgun fire
+  m_Name: shotgunFireSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2792,7 +2792,7 @@ GameObject:
   - component: {fileID: 1447801339}
   - component: {fileID: 1447801340}
   m_Layer: 0
-  m_Name: Machinegun
+  m_Name: MachinegunSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
