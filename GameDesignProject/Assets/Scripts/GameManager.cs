@@ -12,15 +12,28 @@ public class GameManager : MonoBehaviour
 
     public TextMeshProUGUI timerText; // Reference to the UI Text component to display the timer
 
+    public TextMeshProUGUI countdownText;
+
     public EnemySpawning[] spawners; // Reference to the EnemySpawning script
 
     public float spawnStartTime = 20f; // Time before the first enemy spawns
+
+    public AudioSource music;
+
+    public GameObject mainMenuButton;
+    public GameObject resetButton;
+
+  
 
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        mainMenuButton.SetActive(false);
+        resetButton.SetActive(false);
+        music.Play();
+        StartCountdown();
         StartCoroutine(GameStartRoutine());
     }
 
@@ -79,6 +92,8 @@ public class GameManager : MonoBehaviour
     {
         isGameRunning = false;
 
+        music.Stop();
+
         foreach (EnemySpawning spawner in spawners)
         {
             if (spawner != null)
@@ -86,9 +101,19 @@ public class GameManager : MonoBehaviour
                 spawner.stopSpawning();
             }
         }
+        
+        
         if (GameObject.FindGameObjectWithTag("Player") != null)
         {
-            Destroy(GameObject.FindGameObjectWithTag("Player"));
+
+            GameObject[] objects = GameObject.FindGameObjectsWithTag("Enemy");
+
+            foreach (GameObject obj in objects)
+            {
+                Destroy(obj);
+            }
+
+            //Destroy(GameObject.FindGameObjectWithTag("Player"));
             timerText.text = "Game Over: Win!!!";
         }
         if (GameObject.FindGameObjectWithTag("Player") == null)
@@ -98,6 +123,8 @@ public class GameManager : MonoBehaviour
         }
 
         Debug.Log("Game Over!");
+        mainMenuButton.SetActive(true);
+        resetButton.SetActive(true);
     }
 
     void UpdateTimerUI()
@@ -108,4 +135,44 @@ public class GameManager : MonoBehaviour
             timerText.text = $"Time: {timeRemaining:F1}s";
         }
     }
+
+    public void StartCountdown()
+    {
+        StartCoroutine(CountdownRoutine());
+    }
+
+    private IEnumerator CountdownRoutine()
+    {
+        // Freeze game
+        Time.timeScale = 0f;
+
+        int count = 3;
+
+        while (count > 0)
+        {
+            countdownText.text = count.ToString();
+            yield return new WaitForSecondsRealtime(1f); // ignores timeScale
+            count--;
+        }
+
+        countdownText.text = "GO!";
+        yield return new WaitForSecondsRealtime(1f);
+
+        countdownText.text = "";
+
+        // Resume game
+        Time.timeScale = 1f;
+    }
+
+    public void ReturnToMainMenu()
+    {
+        
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+    }
+
+    public void ResetGame()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Level1");
+    }
+
 }

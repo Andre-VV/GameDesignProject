@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 7668704750324357139}
   - component: {fileID: 1889160987511496903}
   - component: {fileID: 3225433330577576109}
+  - component: {fileID: -2578001849828122526}
   m_Layer: 6
   m_Name: Enemy
   m_TagString: Enemy
@@ -212,6 +213,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   player: {fileID: 0}
+  flag: {fileID: 0}
+  flagTransform: {fileID: 0}
   dashRange: 5
   dashSpeed: 10
   dashDuration: 0.5
@@ -231,3 +234,20 @@ MonoBehaviour:
   maxHealth: 60
   currentHealth: 60
   enemyType: 0
+  pickupSpawner: {fileID: -2578001849828122526}
+--- !u!114 &-2578001849828122526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8979119179225633277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3508777dad46d8645892f3df77589370, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  pickupPrefabs:
+  - {fileID: 4879155254982980880, guid: a99bad0a7a05dc1498c3c4eec997ddb4, type: 3}
+  - {fileID: 5330036254789296616, guid: 469cb044b5380cd4f89cfb28efd5027f, type: 3}
+  chanceToSpawnNothing: 0.7
