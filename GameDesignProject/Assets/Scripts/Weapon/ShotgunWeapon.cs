@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using Weapon.CombatTypes;
 
@@ -23,14 +24,52 @@ public class ShotgunWeapon : MonoBehaviour, IWeapon
     public WeaponType WeaponType => WeaponType.Ranged;
     public bool SupportsHoldFire => supportsHoldFire;
 
+    public TextMeshProUGUI WeaponDisplay;
+
+    public TextMeshProUGUI AmmoDisplay;
+
+    public int AmmoCount = 6; // -1 for infinite ammo
+
+    private int currentAmmo;
+
     public void OnEquip(GameObject owner)
     {
         this.owner = owner;
+        currentAmmo = AmmoCount;
+        if (WeaponDisplay == null)
+        {
+            WeaponDisplay = GameObject.Find("Weapon2Name").GetComponent<TextMeshProUGUI>();
+        }
+        if (AmmoDisplay == null)
+        {
+            AmmoDisplay = GameObject.Find("Weapon2Ammo").GetComponent<TextMeshProUGUI>();
+        }
+        if (WeaponDisplay != null)
+        {
+            WeaponDisplay.text = $"{WeaponName}";
+        }
+        if (AmmoDisplay != null)
+        {
+            if (AmmoCount < 0)
+            {
+                AmmoDisplay.text = "Inf/Inf";
+            }
+            else
+            {
+                AmmoDisplay.text = $"{currentAmmo} / {AmmoCount}";
+            }
+
+        }
     }
 
     public void OnUnequip()
     {
         owner = null;
+        if (WeaponDisplay != null)
+            WeaponDisplay.text = "";
+
+        if (AmmoDisplay != null)
+            AmmoDisplay.text = "";
     }
 
     public bool TryFire(Vector2 origin, Vector2 direction)
@@ -38,6 +77,7 @@ public class ShotgunWeapon : MonoBehaviour, IWeapon
         if (!CanFire()) return false;
         if (projectilePrefab == null) return false;
         if (direction.sqrMagnitude <= 0.0001f) return false;
+        if (!HasAmmo()) return false;
 
         PlaySound();
         SpawnPellets(origin, direction.normalized);
@@ -95,5 +135,20 @@ public class ShotgunWeapon : MonoBehaviour, IWeapon
         }
         FireSound.Play();
 
+    }
+
+    private bool HasAmmo()
+    {
+        if (currentAmmo == 0)
+            return false;
+        if (currentAmmo > 0)
+        {
+            currentAmmo = currentAmmo - 1;
+            if (AmmoDisplay != null)
+            {
+                AmmoDisplay.text = $"{currentAmmo} / {AmmoCount}";
+            }
+        }
+        return true;
     }
 }

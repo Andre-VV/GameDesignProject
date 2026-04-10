@@ -20,11 +20,18 @@ public class GameManager : MonoBehaviour
 
     public AudioSource music;
 
+    public GameObject mainMenuButton;
+    public GameObject resetButton;
+
+  
+
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        mainMenuButton.SetActive(false);
+        resetButton.SetActive(false);
         music.Play();
         StartCountdown();
         StartCoroutine(GameStartRoutine());
@@ -116,6 +123,8 @@ public class GameManager : MonoBehaviour
         }
 
         Debug.Log("Game Over!");
+        mainMenuButton.SetActive(true);
+        resetButton.SetActive(true);
     }
 
     void UpdateTimerUI()
@@ -153,6 +162,17 @@ public class GameManager : MonoBehaviour
 
         // Resume game
         Time.timeScale = 1f;
+    }
+
+    public void ReturnToMainMenu()
+    {
+        
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+    }
+
+    public void ResetGame()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Level1");
     }
 
 }

@@ -108,5 +108,5 @@ MonoBehaviour:
   spawnPoint: {fileID: 1438248945588584767}
   startTime: 0
   endTime: 60
-  spawnIntervalStart: 10
+  spawnIntervalStart: 9
   spawnIntervalEnd: 0.5
