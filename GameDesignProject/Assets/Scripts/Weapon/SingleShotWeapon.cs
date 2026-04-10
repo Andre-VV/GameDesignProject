@@ -15,6 +15,8 @@ public class SingleShotWeapon : MonoBehaviour, IWeapon
     private GameObject owner;
     private float lastFireTime;
 
+    public AudioSource FireSound;
+
     public string WeaponName => weaponName;
     public WeaponType WeaponType => WeaponType.Ranged;
     public bool SupportsHoldFire => supportsHoldFire;
@@ -23,6 +25,7 @@ public class SingleShotWeapon : MonoBehaviour, IWeapon
     {
         this.owner = owner;
     }
+        
 
     public void OnUnequip()
     {
@@ -35,7 +38,10 @@ public class SingleShotWeapon : MonoBehaviour, IWeapon
         if (projectilePrefab == null) return false;
         if (direction.sqrMagnitude <= 0.0001f) return false;
 
+        
+        FireSound.Play();
         SpawnProjectile(origin, direction.normalized);
+        
         lastFireTime = Time.time;
         return true;
     }

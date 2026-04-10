@@ -1,5 +1,6 @@
 using NavMeshPlus.Extensions;
 using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -43,6 +44,7 @@ public class EnemyMovementAI : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         navMeshAgent.updateRotation = false;
         navMeshAgent.updateUpAxis = false;
+        navMeshAgent.stoppingDistance = 2.5f;
     }
 
     // Update is called once per frame
@@ -103,9 +105,21 @@ public class EnemyMovementAI : MonoBehaviour
         cooldownTimer = dashCooldown;
         dashDirection = (player.position - transform.position).normalized;
         navMeshAgent.isStopped = true;
+
+        float distance = Vector2.Distance(transform.position, player.position);
+        if (distance <= 1f)
+        {
+            endDash();
+        }
     }
     void dashMove()
     {
+        float distance = Vector2.Distance(transform.position, player.position);
+
+        if (distance <= 1f)
+        {
+            endDash();
+        }
         if (dashTimer > 0f)
         {
             transform.position += (Vector3)(dashDirection * dashSpeed * Time.deltaTime);

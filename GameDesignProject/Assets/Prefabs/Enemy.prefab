@@ -212,6 +212,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   player: {fileID: 0}
+  flag: {fileID: 0}
+  flagTransform: {fileID: 0}
   dashRange: 5
   dashSpeed: 10
   dashDuration: 0.5

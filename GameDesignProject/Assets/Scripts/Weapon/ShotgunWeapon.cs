@@ -17,6 +17,8 @@ public class ShotgunWeapon : MonoBehaviour, IWeapon
     private GameObject owner;
     private float lastFireTime;
 
+    public AudioSource FireSound;
+
     public string WeaponName => weaponName;
     public WeaponType WeaponType => WeaponType.Ranged;
     public bool SupportsHoldFire => supportsHoldFire;
@@ -37,8 +39,10 @@ public class ShotgunWeapon : MonoBehaviour, IWeapon
         if (projectilePrefab == null) return false;
         if (direction.sqrMagnitude <= 0.0001f) return false;
 
+        FireSound.Play();
         SpawnPellets(origin, direction.normalized);
         lastFireTime = Time.time;
+        
         return true;
     }
 

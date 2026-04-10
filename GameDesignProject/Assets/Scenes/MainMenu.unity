@@ -1076,13 +1076,13 @@ MonoBehaviour:
     - m_Text: Level 1
       m_Image: {fileID: 0}
       m_Color: {r: 1, g: 1, b: 1, a: 1}
-    - m_Text: Level 2
+    - m_Text: Level 2 (not implemented)
       m_Image: {fileID: 0}
       m_Color: {r: 1, g: 1, b: 1, a: 1}
-    - m_Text: Level 3
+    - m_Text: Level 3 (not implemented)
       m_Image: {fileID: 0}
       m_Color: {r: 1, g: 1, b: 1, a: 1}
-    - m_Text: Level 4
+    - m_Text: Level 4 (not implemented)
       m_Image: {fileID: 0}
       m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_OnValueChanged:

@@ -12,6 +12,8 @@ public class MachinegunWeapon : MonoBehaviour, IWeapon
     [SerializeField] private float projectileSpeed = 18f;
     [SerializeField] private float projectileLifeTime = 1.2f;
 
+    public AudioSource FireSound;
+
     private GameObject owner;
     private float lastFireTime;
 
@@ -35,6 +37,7 @@ public class MachinegunWeapon : MonoBehaviour, IWeapon
         if (projectilePrefab == null) return false;
         if (direction.sqrMagnitude <= 0.0001f) return false;
 
+        FireSound.Play();
         SpawnProjectile(origin, direction.normalized);
         lastFireTime = Time.time;
         return true;
